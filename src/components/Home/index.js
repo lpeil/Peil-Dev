@@ -5,6 +5,8 @@ import { TimelineLite } from "gsap/all";
 
 import HomeBackground from '../../assets/home-background.jpg';
 import HomeSobre from './HomeSobre';
+import HomeProjetos from './HomeProjetos';
+import HomeContato from './HomeContato';
 
 
 const HomePage = styled.div`
@@ -40,11 +42,6 @@ const Description = styled.span`
     font-size: 53px;
 `
 
-const Space = styled.div`
-    height: 125vh;
-    width: 100%;
-`
-
 export default class Home extends React.Component {
     constructor(props){
         super(props);
@@ -74,7 +71,8 @@ export default class Home extends React.Component {
                     </HomeInfos>
                 </HomePage>
                 <HomeSobre />
-                <Space></Space>
+                <HomeProjetos />
+                <HomeContato />
             </> 
     )}
 }

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: 75px;
     background-color: transparent;
-    z-index: 1;
+    z-index: 2;
     transition: 0.4s;
 `
 

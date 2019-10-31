@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { TimelineLite } from "gsap/all";
-import Button from '../Button';
 import PerfilPhoto from '../../assets/sobre/perfil-photo.jpg';
 
 
@@ -40,22 +39,42 @@ const Infos = styled.div`
     flex-flow: column nowrap;
     justify-content: space-between;
     padding: 40px;
-    font-family: 'Dosis', 'Roboto', sans-serif;
 `
 
 const Head = styled.span`
     position: relative;
     font-size: 32px;
+    font-family: 'Dosis', 'Roboto', sans-serif;
 `
 
 const SubHead = styled.div`
     position: relative;
     font-size: 24px;
+    font-family: 'Dosis', 'Roboto', sans-serif;
 `
 
 const Description = styled.div`
     position: relative;
     font-size: 18px;
+`
+
+const Button = styled.button`
+    position: relative;
+    width: 50%;
+    height: 36px;
+    color: #4D6C80;
+    font-size: 18px;
+    background-color: transparent;
+    border: 1px solid #4D6C80;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.5s;
+
+    &:hover {
+        color: #ffffff;
+        background-color: #4D6C80;
+        border: none;
+    }
 `
 
 export default class HomeSobre extends React.Component {
@@ -74,13 +93,13 @@ export default class HomeSobre extends React.Component {
     }
 
     listenScrollEvent = e => {
-        const startAnimation = document.getElementById("startAnimation");
+        const startAnimation = document.getElementById("animationSobre");
 
         const intersectionObserver = new IntersectionObserver((entries) => {
             let [entry] = entries;
             if (entry.isIntersecting) {
                 setTimeout(() => this.cardSobre.play());
-            } else {
+            }  else {
                 setTimeout(() => this.cardSobre.restart());
             }
         });
@@ -98,7 +117,7 @@ export default class HomeSobre extends React.Component {
 			.from(this.head, 0.5, { left: 100, autoAlpha: 0 })
 			.from(this.subhead, 0.5, { left: 100, autoAlpha: 0 })
             .from(this.description, 0.5, { left: 100, autoAlpha: 0 })
-            .from(this.button, 0.5, { left: 100, autoAlpha: 0 })
+            .from(this.button, 0.25, { top: 100, autoAlpha: 0 })
     }
     
     componentWillUnmount() {
@@ -108,8 +127,7 @@ export default class HomeSobre extends React.Component {
 
     render() {
         return(
-            <>
-            <Wrapper id="startAnimation" ref={div => this.content = div}>
+            <Wrapper id="animationSobre" ref={div => this.content = div}>
                 <Sobre ref={div => this.card = div}>
                     <Photo ref={img => this.photo = img} />
                     <Infos>
@@ -117,12 +135,11 @@ export default class HomeSobre extends React.Component {
                         <SubHead ref={span => this.subhead = span}>Olá! Me chamo Luan Peil.</SubHead>
                         <Description ref={span => this.description = span}>Sou estudante de Sistemas para a Internet, tenho conhecimento em desenvolvimento web tanto back-end, tanto front-end, e algumas habilidades com Linux e desenvolvimento de games e mobile.</Description>
                         <Link to="/sobre">
-                            <Button ref={button => this.button = button} text="Ver Mais" width="50%" />
+                            <Button ref={button => this.button = button}>Ver Mais</Button>
                         </Link>
                     </Infos>
                 </Sobre>
             </Wrapper>
-            </>
         )
     }
 }
