@@ -4,6 +4,7 @@ import { TimelineLite } from "gsap/all";
 
 
 import HomeBackground from '../../assets/home-background.jpg';
+import HomeSobre from './HomeSobre';
 
 
 const HomePage = styled.div`
@@ -30,13 +31,13 @@ const HomeInfos = styled.div`
 
 const Name = styled.span`
     position: relative;
-    font-size: 75px;
+    font-size: 125px;
     font-family: 'Roboto-Slab', serif;
 `
 
 const Description = styled.span`
     position: relative;
-    font-size: 33px;
+    font-size: 53px;
 `
 
 const Space = styled.div`
@@ -58,7 +59,7 @@ export default class Home extends React.Component {
 
 	componentDidMount(){
 		this.textEnter
-            .set(this.content, { autoAlpha: 1 })
+            .set(this.content, { autoAlpha: 1, delay: 0.5 })
 			.from(this.name, 0.5, { left: 200, autoAlpha: 0 })
 			.from(this.desc, 1, { left: -200, autoAlpha: 0 }, "-=0.25")
 	}
@@ -72,6 +73,7 @@ export default class Home extends React.Component {
                         <Description ref={ span => this.desc = span}>Desenvolvedor Web</Description>
                     </HomeInfos>
                 </HomePage>
+                <HomeSobre />
                 <Space></Space>
             </> 
     )}

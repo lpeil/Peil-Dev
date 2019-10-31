@@ -64,7 +64,7 @@ const MenuLink = styled(NavLink)`
 
 export default class Navbar extends React.Component {
     state = {
-        color: 'white'
+        backgroundColor: 'transparent'
     }
     
     listenScrollEvent = e => {
