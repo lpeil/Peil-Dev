@@ -11,6 +11,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin: 10vh 0;
 `
 
 const Title = styled.span`
