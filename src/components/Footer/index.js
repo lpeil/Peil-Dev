@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     padding-top: 10vh;
     background-color: #7510F7;
     color: #fff;
-    z-index: -1;
+    z-index: 0;
 `
 
 const Logo = styled.span`
@@ -50,7 +50,7 @@ const Icon = styled.a`
     }
 
     &:hover div {
-        filter: invert(16%) sepia(62%) saturate(6024%) hue-rotate(264deg) brightness(93%) contrast(109%);
+        filter: invert(16%) sepia(62%) saturate(6024%) hue-rotate(264deg) brightness(55%) contrast(129%);
     } 
 `
 
@@ -91,18 +91,33 @@ const Contact = styled.div`
     background-color: #141C3A;
     border-radius: 10px;
     color: #fff;
+    z-index: 1;
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column nowrap;
+        height: 40vh;
+        margin: 0 5% -20vh 5%;
+    }
 `
 
 const Head = styled.span`
     font-size: 32px;
     font-weight: bold;
     font-family: 'Dosis', sans-serif;
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
 `
 
 const Description = styled.span`
     font-size: 16px;
     line-height: 24px;
     text-align: center;
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
 `
 
 const Button = styled(Link)`
@@ -121,6 +136,10 @@ const Button = styled(Link)`
     &:hover {
         background-color: #7510F7;
     }
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
 `
 
 export default class Navbar extends React.Component {
@@ -130,16 +149,16 @@ export default class Navbar extends React.Component {
                 <Contact>
                     <Head>Vamos Trabalhar?</Head>
                     <Description>Interessado em meu trabalho?<br/>Me chame para conversar.</Description>
-                    <Button>Enviar Mensagem</Button>
+                    <Button to="/contato">Enviar Mensagem</Button>
                 </Contact>
                 <Wrapper>
                     <Logo>Peil</Logo>
                     <Title>Programando, debugando<br />e aprendendo</Title>
                     <SocialLinks>
-                        <Icon href="#"><IconImage image={IconGithub} /></Icon>
-                        <Icon href="#"><IconImage image={IconLinkedin} /></Icon>
-                        <Icon href="#"><IconImage image={IconTwitter} /></Icon>
-                        <Icon href="#"><IconImage image={IconMail} /></Icon>
+                        <Icon href="https://github.com/lpeil/"><IconImage image={IconGithub} /></Icon>
+                        <Icon href="https://www.linkedin.com/in/luan-peil-19b98414a/"><IconImage image={IconLinkedin} /></Icon>
+                        <Icon href="https://twitter.com/PeildeOrleans"><IconImage image={IconTwitter} /></Icon>
+                        <Icon href="mailto:contato@peil.dev"><IconImage image={IconMail} /></Icon>
                     </SocialLinks>
                     <Info>Feito com <InfoImage /></Info>
                 </Wrapper>

@@ -15,37 +15,53 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.span`
+    margin-bottom: 5vh;
+    color:  #141C3A;
     font-family: 'Dosis', 'Roboto', sans-serif;
     font-size: 32px;
-    margin-bottom: 5vh;
+    font-weight: bold;
+`
+
+const Cards = styled.div`
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: center;
 `
 
 const Card = styled.div`
     display: flex;
     position: relative;
+    height: 250px;
+    width: 25%;
+    min-width: 350px;
+    max-width: 90%;
+    margin: 0 15px;
     flex-flow: row nowrap;
-    width: 90%;
-    height: 200px;
-    margin: 5vh 0;
+    border-radius: 10px;
     box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.5);
 `
 
 const Image = styled.div`
     position: relative;
-    width: 20%;
+    width: 100%;
     height: 100%;
     background-image: url(${props => props.image});
     background-position: center center;
     background-size: cover;
+    border-radius: 10px;
+    transition: 0.4s;
 `
 
 const Infos = styled.div`
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-flow: column nowrap;
-    justify-content: space-between;
-    width: 80%;
-    height: 80%;
-    padding: 20px;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: -100%;
+    opacity: 0;
 `
 
 const Header = styled.span`
@@ -57,6 +73,12 @@ const Header = styled.span`
 const Desc = styled.span`
     position: relative;
     font-size: 16px;
+    text-align: center;
+
+    @media only screen and (max-width: 768px) {
+        text-align: justify;
+        margin: 10px 0;
+    }
 `
 
 const Situation = styled.span`
@@ -68,6 +90,11 @@ const Buttons = styled.span`
     position: relative;
     display: flex;
     flex-flow: row nowrap;
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column nowrap;
+        margin: 10px;
+    }
 `
 
 const Button = styled.button`
@@ -88,6 +115,11 @@ const Button = styled.button`
         background-color: #4D6C80;
         border: none;
     }
+
+    @media only screen and (max-width: 768px) {
+        margin-top: 10px;
+        margin-right: 0;
+    }
 `
 
 export default class HomeSobre extends React.Component {
@@ -95,13 +127,11 @@ export default class HomeSobre extends React.Component {
         super(props);
         
         this.cards = [];
-        this.photo = [];
-        this.header = [];
-        this.desc = [];
-        this.situation = [];
-        this.buttons = [];
+        this.image = [];
+        this.infos = [];
 
         this.cardAnimation = new TimelineLite({ paused: true });
+        this.cardHover = new TimelineLite({paused: true});
     }
 
     listenScrollEvent = e => {
@@ -111,8 +141,6 @@ export default class HomeSobre extends React.Component {
             let [entry] = entries;
             if (entry.isIntersecting) {
                 setTimeout(() => this.cardAnimation.play());
-            } else {
-                setTimeout(() => this.cardAnimation.restart());
             }
         });
 
@@ -123,13 +151,11 @@ export default class HomeSobre extends React.Component {
         window.addEventListener('scroll', this.listenScrollEvent);
         
         this.cardAnimation
-        .from(this.cards, 0.5, { top: 150, autoAlpha: 0, delay: 0.5 })
-        .from(this.photo, 0.5, { right: 150, autoAlpha: 0 })
-        .from(this.header, 0.5, { left: 150, autoAlpha: 0 })
-        .from(this.desc, 0.5, { left: 150, autoAlpha: 0 })
-        .from(this.situation, 0.5, { left: 150, autoAlpha: 0 })
-        .from(this.buttons, 0.5, { top: 150, autoAlpha: 0 })
+            .staggerFrom(this.cards, 0.5, { top: 150, autoAlpha: 0, delay: 0.5 }, 0.5);
 
+        this.cardHover
+            .to(this.image, 0.5, { autoAlpha: 0, delay: 3 } )
+            .to(this.infos, 0.5, { autoAlpha: 1, delay: 0.5 } );
     }
     
     componentWillUnmount() {
@@ -140,30 +166,32 @@ export default class HomeSobre extends React.Component {
         return(
             <Wrapper id="animationProjetos">
                 <Title>Meus Projetos</Title>
-                {dataArray.map((element, index) => (
-                    <Card key={element.id} ref={div => this.cards[index] = div}>
-                        <Image image={element.image} ref={div => this.photo[index] = div}/>
-                        <Infos>
-                            <Header ref={span => this.header[index] = span}>
-                                {element.header}
-                            </Header>
-                            <Desc ref={span => this.desc[index] = span}>
-                                {element.desc}
-                            </Desc>
-                            <Situation ref={span => this.situation[index] = span}>
-                                {element.situation}
-                            </Situation>
-                            <Buttons ref={span => this.buttons[index] = span}>
-                                <Link to={element.intenalLink}>
-                                    <Button>Ver Mais</Button>
-                                </Link>
-                                <a href={element.externalLink}>
-                                    <Button>{element.externalLinkName}</Button>
-                                </a>
-                            </Buttons>
-                        </Infos>
-                    </Card>
-                ))}
+                <Cards>
+                    {dataArray.map((element, index) => (
+                        <Card key={element.id} ref={div => this.cards[index] = div}>
+                            <Image image={element.image} ref={div => this.image[index] = div} />
+                            <Infos ref={div => this.infos[index] = div}>
+                                <Header>
+                                    {element.header}
+                                </Header>
+                                <Desc>
+                                    {element.desc}
+                                </Desc>
+                                <Situation>
+                                    {element.situation}
+                                </Situation>
+                                <Buttons>
+                                    <Link to={element.intenalLink}>
+                                        <Button>Ver Mais</Button>
+                                    </Link>
+                                    <a href={element.externalLink}>
+                                        <Button>{element.externalLinkName}</Button>
+                                    </a>
+                                </Buttons>
+                            </Infos>
+                        </Card>
+                    ))}
+                </Cards>
             </Wrapper>
         )
     }

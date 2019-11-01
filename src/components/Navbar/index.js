@@ -5,11 +5,13 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
     position: fixed;
     display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: 75px;
+    top: 0;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
-    height: 75px;
     background-color: transparent;
     z-index: 2;
     transition: 0.75s;
@@ -32,6 +34,10 @@ const LinksWrapper = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
 `
 
 const MenuLink = styled(NavLink)`

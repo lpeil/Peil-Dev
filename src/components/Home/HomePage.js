@@ -7,9 +7,10 @@ import HomeBackground from '../../assets/home-bg.svg';
 
 const Wrapper = styled.div`
     display: flex;
-    justify-content: center;
     height: 100vh;
     width: 100%;
+    justify-content: center;
+    align-items: center;
     margin-top: -75px;
     background-color: #fff;
     background-image: url(${HomeBackground});
@@ -17,11 +18,15 @@ const Wrapper = styled.div`
     background-repeat: no-repeat;
     background-size: 35%;
     z-index: 1;
+
+    @media only screen and (max-width: 768px) {
+        background-size: 45%;
+    }
 `
 
 const HomeInfos = styled.div`
     display: flex;
-    margin: 100px;
+    margin-top: -10vh;
     flex-flow: column wrap;
     align-items: center;
 `
@@ -30,14 +35,23 @@ const Title = styled.span`
     position: relative;
     font-size: 75px;
     font-family: 'Dosis', serif;
+    text-align: center;
     color: #141C3A;
+    @media only screen and (max-width: 768px) {
+        font-size: 50px;
+    }
+
 `
 
 const Subtitle = styled.span`
     position: relative;
     margin: 5vh;
     font-size: 24px;
+    text-align: center;
     color: #141C3A;
+    @media only screen and (max-width: 768px) {
+        font-size: 16px;
+    }
 `
 
 const Photo = styled.div`
@@ -48,6 +62,10 @@ const Photo = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
+    @media only screen and (max-width: 768px) {
+        width: 100px;
+        height: 100px;
+    }
 `
 
 export default class HomePage extends React.Component {
@@ -76,7 +94,7 @@ export default class HomePage extends React.Component {
             <Wrapper>
                 <HomeInfos ref={ div => this.content = div }>
                     <Title ref={ span => this.name = span }>Desenvolvedor Web</Title>
-                    <Subtitle ref={ span => this.desc = span}>Eu sou programador Back-end e Front-end, e adoro isso</Subtitle>
+                    <Subtitle ref={ span => this.desc = span}>Bla bla bla, frase genêrica sobre programação super legal</Subtitle>
                     <Photo ref={ span => this.photo = span}/>
                 </HomeInfos>
             </Wrapper>
