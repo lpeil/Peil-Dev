@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     height: 75px;
     background-color: transparent;
     z-index: 2;
-    transition: 0.4s;
+    transition: 0.75s;
 `
 
 const FakeSpace = styled.div`
@@ -65,14 +65,17 @@ const MenuLink = styled(NavLink)`
 
 export default class Navbar extends React.Component {
     state = {
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        boxShadow: 'none'
     }
     
     listenScrollEvent = e => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 10) {
             this.setState({backgroundColor: '#ffffff'})
+            this.setState({boxShadow: '0px 5px 5px 0px rgba(0,0,0,0.25)'})
         } else {
             this.setState({backgroundColor: 'transparent'})
+            this.setState({boxShadow: 'none'})
         }
     }
     
@@ -83,7 +86,10 @@ export default class Navbar extends React.Component {
     render() {
         return(
             <>
-                <Wrapper style={{color: this.state.color, backgroundColor: this.state.backgroundColor}}>
+                <Wrapper style={{
+                    backgroundColor: this.state.backgroundColor,
+                    boxShadow: this.state.boxShadow
+                }}>
                     <Logo>  Peil</Logo>
                     <LinksWrapper>
                         <MenuLink to="/" exact activeClassName="active">ÍNICIO</MenuLink>
