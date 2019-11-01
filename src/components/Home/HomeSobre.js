@@ -1,145 +1,182 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { TimelineLite } from "gsap/all";
-import PerfilPhoto from '../../assets/sobre/perfil-photo.jpg';
-
+import { dataArray } from "../Sobre/data";
 
 const Wrapper = styled.div`
+    display: flex;
     width: 100%;
-    display: flex;
+    height: 80vh;
     justify-content: center;
-    margin: 10vh 0;
+    background-color: #7510F7;
 `
 
-const Sobre = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    width: 60%;
-    height: 380px;
-    background-color: #e9f6ff;
-    border-radius: 10px;
-`
-
-const Photo = styled.div`
-    position: relative;
+const Apresentention = styled.div`
     width: 40%;
-    height: 100%;
-    background-image: url(${PerfilPhoto});
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    min-width: 300px;
+    max-width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 `
 
-const Infos = styled.div`
-    width: 60%;
+const Title = styled.span`
+    font-size: 32px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+`
+
+const SubTitle = styled.span`
+    font-size: 18px;
+    text-align: center;
+`
+
+const Cards = styled.div`
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    padding: 40px;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: -20vh;
+
+    @media only screen and (max-width: 740px) {
+        flex-flow: column wrap;
+    }
+`
+
+const Card = styled.div`
+    display: flex;
+    max-width: 25vw;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+    &:first-child {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-left: 1px solid #ccc;
+    }
+
+    &:last-child {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    
+    & div, & span {
+        margin: 15px 0;
+    }
+
+    @media only screen and (max-width: 740px) {
+        border: 1px solid #ccc;
+        border-top: 0;
+        min-width: 50%;
+        max-width: 60%;
+
+        
+        &:first-child {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 0;
+            border-top: 1px solid #ccc;
+        }
+
+        &:last-child {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 0px;
+        }
+    }
+`
+
+const Icon = styled.div`
+    width: 60px;
+    height: 60px;
+    background-image: url(${props => props.image});
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `
 
 const Head = styled.span`
-    position: relative;
-    font-size: 32px;
-    font-family: 'Dosis', 'Roboto', sans-serif;
-`
-
-const SubHead = styled.div`
-    position: relative;
+    color: #141C3A;
     font-size: 24px;
-    font-family: 'Dosis', 'Roboto', sans-serif;
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+    text-align: center;
 `
 
-const Description = styled.div`
-    position: relative;
-    font-size: 18px;
+const Description = styled.span`
+    color: #000;
+    line-height: 25px;
+    font-size: 16px;
+    text-align: center;
 `
 
-const Button = styled.button`
-    position: relative;
-    width: 50%;
-    height: 36px;
-    color: #4D6C80;
-    font-size: 18px;
-    background-color: transparent;
-    border: 1px solid #4D6C80;
-    border-radius: 10px;
-    outline: none;
-    transition: 0.5s;
+const SubHead = styled.span`
+    color: #7510F7;
+    font-size: 20px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+`
 
-    &:hover {
-        color: #ffffff;
-        background-color: #4D6C80;
-        border: none;
-    }
+const Linguages = styled.span`
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+`
+
+const DevTools = styled.div`
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+`
+
+const Tool = styled.span`
+    color: #000;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    margin: 0!important;
 `
 
 export default class HomeSobre extends React.Component {
-    constructor(props){
-		super(props);
-
-		this.cardSobre = new TimelineLite({ paused:true });
-
-        this.content = null;
-        this.card = null;
-        this.photo = null;
-		this.head = null;
-		this.subhead = null;
-        this.description = null;
-        this.button = null;
-    }
-
-    listenScrollEvent = e => {
-        const startAnimation = document.getElementById("animationSobre");
-
-        const intersectionObserver = new IntersectionObserver((entries) => {
-            let [entry] = entries;
-            if (entry.isIntersecting) {
-                setTimeout(() => this.cardSobre.play());
-            }  else {
-                setTimeout(() => this.cardSobre.restart());
-            }
-        });
-
-        intersectionObserver.observe(startAnimation);
-    }
-    
-    componentDidMount() {
-        window.addEventListener('scroll', this.listenScrollEvent);
-        
-		this.cardSobre
-            .set(this.content, { autoAlpha: 1, delay: 0.5 })
-			.from(this.card, 0.5, { autoAlpha: 0 })
-			.from(this.photo, 0.5, { left: -500, autoAlpha: 0 })
-			.from(this.head, 0.5, { left: 100, autoAlpha: 0 })
-			.from(this.subhead, 0.5, { left: 100, autoAlpha: 0 })
-            .from(this.description, 0.5, { left: 100, autoAlpha: 0 })
-            .from(this.button, 0.25, { top: 100, autoAlpha: 0 })
-    }
-    
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.listenScrollEvent)
-    }
-    
-
     render() {
         return(
-            <Wrapper id="animationSobre" ref={div => this.content = div}>
-                <Sobre ref={div => this.card = div}>
-                    <Photo ref={img => this.photo = img} />
-                    <Infos>
-                        <Head ref={span => this.head = span}>Sobre Mim</Head>
-                        <SubHead ref={span => this.subhead = span}>Olá! Me chamo Luan Peil.</SubHead>
-                        <Description ref={span => this.description = span}>Sou estudante de Sistemas para a Internet, tenho conhecimento em desenvolvimento web tanto back-end, tanto front-end, e algumas habilidades com Linux e desenvolvimento de games e mobile.</Description>
-                        <Link to="/sobre">
-                            <Button ref={button => this.button = button}>Ver Mais</Button>
-                        </Link>
-                    </Infos>
-                </Sobre>
-            </Wrapper>
+            <>
+                <Wrapper>
+                    <Apresentention>
+                        <Title>Opa, sou o Luan Peil, seja bem vindo.</Title>
+                        <SubTitle>Sou programador a 3 anos, e atualmente estudo Sistemas para a Internet, tenho conhecimento em desenvolvimento web tanto back-end, tanto front-end, e algumas habilidades com Linux e desenvolvimento de games e mobile.</SubTitle>
+                    </Apresentention>
+                </Wrapper>
+                <Cards>
+                    {dataArray.map((element, index) =>
+                        <Card id={index}>
+                            <Icon image={element.icon}/>
+                            <Head>{element.head}</Head>
+                            <Description>{element.description}</Description>
+                            <SubHead>{element.linguagenssubhead}</SubHead>
+                            <Linguages>{element.linguages}</Linguages>
+                            <DevTools>
+                                <SubHead>{element.devtoolsubhead}</SubHead>
+                                {element.tools.map((tool) => 
+                                    <Tool>{tool}</Tool>
+                                )}
+                            </DevTools>
+                        </Card>
+                    )}
+                </Cards>
+            </>
         )
     }
 }

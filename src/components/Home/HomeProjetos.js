@@ -11,12 +11,15 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin: 10vh 0;
 `
 
 const Title = styled.span`
+    margin-bottom: 5vh;
+    color:  #141C3A;
     font-family: 'Dosis', 'Roboto', sans-serif;
     font-size: 32px;
-    margin-bottom: 5vh;
+    font-weight: bold;
 `
 
 const Card = styled.div`
@@ -27,6 +30,11 @@ const Card = styled.div`
     height: 200px;
     margin: 5vh 0;
     box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.5);
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column nowrap;
+        height: auto;
+    }
 `
 
 const Image = styled.div`
@@ -36,6 +44,11 @@ const Image = styled.div`
     background-image: url(${props => props.image});
     background-position: center center;
     background-size: cover;
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        height: 250px;
+    }
 `
 
 const Infos = styled.div`
@@ -45,6 +58,11 @@ const Infos = styled.div`
     width: 80%;
     height: 80%;
     padding: 20px;
+
+    @media only screen and (max-width: 768px) {
+        align-items: center;
+        width: 85%;
+    }
 `
 
 const Header = styled.span`
@@ -56,6 +74,11 @@ const Header = styled.span`
 const Desc = styled.span`
     position: relative;
     font-size: 16px;
+
+    @media only screen and (max-width: 768px) {
+        text-align: justify;
+        margin: 10px 0;
+    }
 `
 
 const Situation = styled.span`
@@ -67,6 +90,11 @@ const Buttons = styled.span`
     position: relative;
     display: flex;
     flex-flow: row nowrap;
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column nowrap;
+        margin: 10px;
+    }
 `
 
 const Button = styled.button`
@@ -86,6 +114,11 @@ const Button = styled.button`
         color: #ffffff;
         background-color: #4D6C80;
         border: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+        margin-top: 10px;
+        margin-right: 0;
     }
 `
 
@@ -127,7 +160,7 @@ export default class HomeSobre extends React.Component {
         .from(this.header, 0.5, { left: 150, autoAlpha: 0 })
         .from(this.desc, 0.5, { left: 150, autoAlpha: 0 })
         .from(this.situation, 0.5, { left: 150, autoAlpha: 0 })
-        .from(this.buttons, 0.5, { top: 150, autoAlpha: 0 })
+        .from(this.buttons, 0.5, { scale: 0, autoAlpha: 0 })
 
     }
     

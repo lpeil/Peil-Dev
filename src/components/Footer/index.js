@@ -2,87 +2,167 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import IconGithub   from '../../assets/icons/github.svg'
+import IconLinkedin from '../../assets/icons/linkedin.svg'
+import IconTwitter  from '../../assets/icons/twitter.svg'
+import IconMail     from '../../assets/icons/mail.svg'
+import LogoReact    from '../../assets/icons/react-logo.png'
+
 const Wrapper = styled.div`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    background-color: #4d6c80;
+    height: 60vh;
+    padding-top: 10vh;
+    background-color: #7510F7;
     color: #fff;
-    z-index: 1;
+    z-index: 0;
 `
 
-const MenuLinks = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 50%;
-    padding: 2vh 0 5vh 0;
-    border-bottom: 1px solid #ffffff;
-`
-
-const Copyright = styled.span`
-    font-size: 18px;
-    margin: 3vh 0;
-`
-
-const Submenu = styled.span`
-    display: flex;
-    flex-flow: column nowrap;
-    width: auto;
-    max-width: 33%;
+const Logo = styled.span`
+    font-size: 44px;
+    font-family: 'Roboto Slab', serif;
+    margin: 5vh;
 `
 
 const Title = styled.span`
-    width: 100%;
-    margin: 5px 0;
-    font-family: 'Dosis', 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
 `
 
-const Infos = styled.span`
+const SocialLinks = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 5vh;
+`
+
+const Icon = styled.a`
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+
+    &:hover {
+        background-color: #fff;
+    }
+
+    &:hover div {
+        filter: invert(16%) sepia(62%) saturate(6024%) hue-rotate(264deg) brightness(55%) contrast(129%);
+    } 
+`
+
+const IconImage = styled.div`
+    content: " ";
+    width: 100%;
+    height: 100%;
+    background-image: url(${props => props.image});
+    background-size: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+`
+
+const Info = styled.div`
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    font-size: 14px;
+`
+
+const InfoImage = styled.div`
+    height: 40px;
+    width: 90px;
+    background-image: url(${LogoReact});
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+`
+
+const Contact = styled.div`
+    display: flex;
+    width: 90%;
+    height: 20vh;
+    margin: 0 5% -10vh 5%;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #141C3A;
+    border-radius: 10px;
+    color: #fff;
+    z-index: 1;
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column nowrap;
+        height: 40vh;
+        margin: 0 5% -20vh 5%;
+    }
+`
+
+const Head = styled.span`
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Dosis', sans-serif;
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
+`
+
+const Description = styled.span`
     font-size: 16px;
-    margin: 5px 0;
+    line-height: 24px;
+    text-align: center;
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
+`
+
+const Button = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 190px;
+    height: 55px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #7510F7;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+        background-color: #7510F7;
+    }
+
+    @media only screen and (max-width: 768px) {
+        margin: 10px 0;
+    }
 `
 
 export default class Navbar extends React.Component {
     render() {
         return(
-            <Wrapper>
-                <MenuLinks>
-                    <Submenu>
-                        <Title>LINKS</Title>
-                        <Infos>
-                            <Link to="/">Início</Link>
-                        </Infos>
-                        <Infos>
-                            <Link to="/sobre">Sobre</Link>
-                        </Infos>
-                        <Infos>
-                            <Link to="/contato">Contato</Link>
-                        </Infos>
-                        <Infos>
-                            <Link to="/projetos">Projetos</Link>
-                        </Infos>
-                    </Submenu>
-                    <Submenu>
-                        <Title>LUAN PEIL</Title>
-                        <Infos>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam nec nibh at accumsan. Donec ante urna, cursus congue dui vel, commodo accumsan massa.</Infos>
-                    </Submenu>
-                    <Submenu>
-                        <Title>Contato</Title>
-                        <Infos>(53) 99182-2922</Infos>
-                        <Infos>contato@peil.dev</Infos>
-                        <Infos>Pelotas (RS)</Infos>
-                    </Submenu>
-                </MenuLinks>
-                <Copyright>
-                    Copyright 2019 - Peil Dev
-                </Copyright>
-            </Wrapper>
+            <>
+                <Contact>
+                    <Head>Vamos Trabalhar?</Head>
+                    <Description>Interessado em meu trabalho?<br/>Me chame para conversar.</Description>
+                    <Button to="/contato">Enviar Mensagem</Button>
+                </Contact>
+                <Wrapper>
+                    <Logo>Peil</Logo>
+                    <Title>Programando, debugando<br />e aprendendo</Title>
+                    <SocialLinks>
+                        <Icon href="https://github.com/lpeil/"><IconImage image={IconGithub} /></Icon>
+                        <Icon href="https://www.linkedin.com/in/luan-peil-19b98414a/"><IconImage image={IconLinkedin} /></Icon>
+                        <Icon href="https://twitter.com/PeildeOrleans"><IconImage image={IconTwitter} /></Icon>
+                        <Icon href="mailto:contato@peil.dev"><IconImage image={IconMail} /></Icon>
+                    </SocialLinks>
+                    <Info>Feito com <InfoImage /></Info>
+                </Wrapper>
+            </>
         )
     }
 }
