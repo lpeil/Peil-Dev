@@ -38,6 +38,7 @@ const Card = styled.div`
     max-width: 90%;
     margin: 0 15px;
     flex-flow: row nowrap;
+    background-color: #141C3A;
     border-radius: 10px;
     box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.5);
 `
@@ -61,6 +62,9 @@ const Infos = styled.div`
     justify-content: space-around;
     align-items: center;
     margin-left: -100%;
+    color: #fff;
+    background-color: #141C3A;
+    border-radius: 10px;
     opacity: 0;
 `
 
@@ -102,17 +106,17 @@ const Button = styled.button`
     width: 150px;
     height: 36px;
     margin-right: 10px;
-    color: #4D6C80;
+    color: #fff;
     font-size: 18px;
     background-color: transparent;
-    border: 1px solid #4D6C80;
+    border: 1px solid #fff;
     border-radius: 10px;
     outline: none;
     transition: 0.5s;
 
     &:hover {
-        color: #ffffff;
-        background-color: #4D6C80;
+        color: #4D6C80;
+        background-color: #fff;
         border: none;
     }
 
@@ -154,8 +158,8 @@ export default class HomeSobre extends React.Component {
             .staggerFrom(this.cards, 0.5, { top: 150, autoAlpha: 0, delay: 0.5 }, 0.5);
 
         this.cardHover
-            .to(this.image, 0.5, { autoAlpha: 0, delay: 3 } )
-            .to(this.infos, 0.5, { autoAlpha: 1, delay: 0.5 } );
+            .to(this.image, 0.25, { autoAlpha: 0 } )
+            .to(this.infos, 0.5, { autoAlpha: 1 } );
     }
     
     componentWillUnmount() {
@@ -168,7 +172,12 @@ export default class HomeSobre extends React.Component {
                 <Title>Meus Projetos</Title>
                 <Cards>
                     {dataArray.map((element, index) => (
-                        <Card key={element.id} ref={div => this.cards[index] = div}>
+                        <Card 
+                            key={element.id} 
+                            ref={div => this.cards[index] = div}
+                            onMouseEnter={() => {this.cardHover.play()}}
+                            onMouseLeave={() => {this.cardHover.reverse()}}    
+                        >
                             <Image image={element.image} ref={div => this.image[index] = div} />
                             <Infos ref={div => this.infos[index] = div}>
                                 <Header>
