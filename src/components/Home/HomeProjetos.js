@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { TimelineLite } from "gsap/all";
 
 import { dataArray } from "../Projetos/data";
@@ -50,8 +49,13 @@ const Image = styled.div`
     background-image: url(${props => props.image});
     background-position: center center;
     background-size: cover;
-    border-radius: 10px;
-    transition: 0.4s;
+    border-radius: 8px;
+    transition: 0.5s;
+    z-index: 1;
+
+    &:hover {
+        opacity: 0;
+    }
 `
 
 const Infos = styled.div`
@@ -65,7 +69,6 @@ const Infos = styled.div`
     color: #fff;
     background-color: #141C3A;
     border-radius: 10px;
-    opacity: 0;
 `
 
 const Header = styled.span`
@@ -75,6 +78,7 @@ const Header = styled.span`
 `
 
 const Desc = styled.span`
+    width: 90%;
     position: relative;
     font-size: 16px;
     text-align: center;
@@ -90,52 +94,13 @@ const Situation = styled.span`
     font-size: 14px;
 `
 
-const Buttons = styled.span`
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-
-    @media only screen and (max-width: 768px) {
-        flex-flow: column nowrap;
-        margin: 10px;
-    }
-`
-
-const Button = styled.button`
-    position: relative;
-    width: 150px;
-    height: 36px;
-    margin-right: 10px;
-    color: #fff;
-    font-size: 18px;
-    background-color: transparent;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    outline: none;
-    transition: 0.5s;
-
-    &:hover {
-        color: #4D6C80;
-        background-color: #fff;
-        border: none;
-    }
-
-    @media only screen and (max-width: 768px) {
-        margin-top: 10px;
-        margin-right: 0;
-    }
-`
-
 export default class HomeSobre extends React.Component {
     constructor(props){
         super(props);
         
         this.cards = [];
-        this.image = [];
-        this.infos = [];
 
         this.cardAnimation = new TimelineLite({ paused: true });
-        this.cardHover = new TimelineLite({paused: true});
     }
 
     listenScrollEvent = e => {
@@ -156,10 +121,6 @@ export default class HomeSobre extends React.Component {
         
         this.cardAnimation
             .staggerFrom(this.cards, 0.5, { top: 150, autoAlpha: 0, delay: 0.5 }, 0.5);
-
-        this.cardHover
-            .to(this.image, 0.25, { autoAlpha: 0 } )
-            .to(this.infos, 0.5, { autoAlpha: 1 } );
     }
     
     componentWillUnmount() {
@@ -175,11 +136,9 @@ export default class HomeSobre extends React.Component {
                         <Card 
                             key={element.id} 
                             ref={div => this.cards[index] = div}
-                            onMouseEnter={() => {this.cardHover.play()}}
-                            onMouseLeave={() => {this.cardHover.reverse()}}    
                         >
-                            <Image image={element.image} ref={div => this.image[index] = div} />
-                            <Infos ref={div => this.infos[index] = div}>
+                            <Image image={element.image} />
+                            <Infos>
                                 <Header>
                                     {element.header}
                                 </Header>
@@ -189,14 +148,6 @@ export default class HomeSobre extends React.Component {
                                 <Situation>
                                     {element.situation}
                                 </Situation>
-                                <Buttons>
-                                    <Link to={element.intenalLink}>
-                                        <Button>Ver Mais</Button>
-                                    </Link>
-                                    <a href={element.externalLink}>
-                                        <Button>{element.externalLinkName}</Button>
-                                    </a>
-                                </Buttons>
                             </Infos>
                         </Card>
                     ))}
