@@ -1,5 +1,5 @@
 import CardFMON from '../../assets/projetos/card-fmon.jpg';
-import CardECart from '../../assets/projetos/card-ecart.jpg';
+import CardECart from '../../assets/projetos/card-ecart.png';
 
 export const dataArray = [
 	{

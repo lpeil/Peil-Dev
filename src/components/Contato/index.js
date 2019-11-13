@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import emailjs from 'emailjs-com';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -106,22 +107,29 @@ export default class Contato extends React.Component {
         })
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        const serviceId = "default_service";
-        const templateId = "template_fxuWLjix";
+    handleSubmit(e) {
+        e.preventDefault();
+        const serviceId = 'gmail';
+        const templateId = 'template_fxuWLjix';
+        const userId = 'user_vlkHTlE5u4kXb8gRDmn4p';
         
-        window.emailjs.sendForm(
+        emailjs.send(
             serviceId, templateId, {
                 from_name: this.state.name,
                 reply_to: this.state.email,
                 message_html: this.state.message
-            }
-        );
+            }, userId
+        ).then((response) => {
+            console.log('SUCCESS!', response.status, response.text);
+         }, (err) => {
+            console.log('FAILED...', err);
+         });
 
-        this.name.value = '';
-        this.email.value = '';
-        this.message.value = '';
+         this.setState({
+            name: '',
+            email: '',
+            message: ''
+          });
     }
         
 
@@ -129,7 +137,7 @@ export default class Contato extends React.Component {
         return (
             <Wrapper>
                 <Title>No que que posso te ajudar?</Title>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Line>
                         <Field>
                             <Label>Nome</Label>
