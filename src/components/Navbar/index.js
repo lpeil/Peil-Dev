@@ -100,7 +100,6 @@ export default class Navbar extends React.Component {
                     <LinksWrapper>
                         <MenuLink to="/" exact activeClassName="active">ÍNICIO</MenuLink>
                         <MenuLink to="/projetos" activeClassName="active">PROJETOS</MenuLink>
-                        <MenuLink to="/sobre" activeClassName="active">SOBRE</MenuLink>
                         <MenuLink to="/contato" activeClassName="active">CONTATO</MenuLink>
                     </LinksWrapper>
                 </Wrapper>

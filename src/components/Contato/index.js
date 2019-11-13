@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     flex-flow: column nowrap;
-    margin: 10vh;
+    margin-top: 5vh;
 `
 
 const Title = styled.div`
@@ -92,27 +92,81 @@ const Line = styled.div`
     }
 `
 
-const Contato = () => (
-    <Wrapper>
-        <Title>No que eu posso te ajudar?</Title>
-        <Form>
-            <Line>
-                <Field>
-                    <Label>Nome</Label>
-                    <Input type="text" name="name" />
-                </Field>
-                <Field>
-                    <Label>Email</Label>
-                    <Input type="email" name="email" />
-                </Field>
-            </Line>
-            <Field>
-                <Label>Mensagem</Label>
-                <Message />
-            </Field>
-            <Button type="submit">Enviar</Button>
-        </Form>
-    </Wrapper>
-)
+export default class Contato extends React.Component { 
+    constructor(props) {
+        super(props);
+        this.state = { message: '', name: '', email: '' };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-export default Contato;
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const serviceId = "default_service";
+        const templateId = "template_fxuWLjix";
+        
+        window.emailjs.sendForm(
+            serviceId, templateId, {
+                from_name: this.state.name,
+                reply_to: this.state.email,
+                message_html: this.state.message
+            }
+        );
+
+        this.name.value = '';
+        this.email.value = '';
+        this.message.value = '';
+    }
+        
+
+    render() {
+        return (
+            <Wrapper>
+                <Title>No que que posso te ajudar?</Title>
+                <Form>
+                    <Line>
+                        <Field>
+                            <Label>Nome</Label>
+                            <Input 
+                                type="text" 
+                                name="name"
+                                id="name"
+                                onChange={this.handleChange}
+                                required
+                                value={this.state.name}
+                            />
+                        </Field>
+                        <Field>
+                            <Label>Email</Label>
+                            <Input 
+                                type="email" 
+                                name="email"
+                                id="email"
+                                onChange={this.handleChange}
+                                required
+                                value={this.state.email}
+                            />
+                        </Field>
+                    </Line>
+                    <Field>
+                        <Label>Mensagem</Label>
+                        <Message 
+                            name="message"
+                            id="message"
+                            onChange={this.handleChange}
+                            required
+                            value={this.state.message}
+                        />
+                    </Field>
+                    <Button type="submit">Enviar</Button>
+                </Form>
+            </Wrapper>
+        )
+    }
+}

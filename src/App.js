@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Navbar   from './components/Navbar';
-import Footer   from './components/Footer';
 import Home     from './components/Home';
 import Projetos from './components/Projetos';
 import Sobre    from './components/Sobre';
@@ -37,7 +36,6 @@ function App() {
           <Route exact={true} path="/contato"   component={Contato} />
         </Switch>
         </Content>
-      <Footer />
     </BrowserRouter>
   );
 }

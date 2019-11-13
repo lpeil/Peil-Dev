@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TimelineLite } from "gsap/all";
+import { Link } from 'react-router-dom';
 
 import { dataArray } from "../Projetos/data";
 
@@ -28,7 +29,7 @@ const Cards = styled.div`
     justify-content: center;
 `
 
-const Card = styled.div`
+const Card = styled(Link)`
     display: flex;
     position: relative;
     height: 250px;
@@ -136,6 +137,7 @@ export default class HomeSobre extends React.Component {
                         <Card 
                             key={element.id} 
                             ref={div => this.cards[index] = div}
+                            to={element.intenalLink}
                         >
                             <Image image={element.image} />
                             <Infos>
