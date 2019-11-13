@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import MenuIcon from '../../assets/icons/menu.svg';
+
 const Wrapper = styled.div`
     position: fixed;
     display: flex;
@@ -69,6 +71,23 @@ const MenuLink = styled(NavLink)`
     }
 `
 
+const MenuMobileIcon = styled.div`
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 15px;
+    background-image: url(${MenuIcon});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    cursor: pointer;
+
+    @media only screen and (max-width: 768px) {
+        display: flex;
+    }
+`
+
 export default class Navbar extends React.Component {
     state = {
         backgroundColor: 'transparent',
@@ -102,6 +121,7 @@ export default class Navbar extends React.Component {
                         <MenuLink to="/projetos" activeClassName="active">PROJETOS</MenuLink>
                         <MenuLink to="/contato" activeClassName="active">CONTATO</MenuLink>
                     </LinksWrapper>
+                    <MenuMobileIcon />
                 </Wrapper>
                 <FakeSpace></FakeSpace>
             </>

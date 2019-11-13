@@ -12,18 +12,12 @@ const Wrapper = styled.div`
 `
 
 const Card = styled.div`
-    width: 70%;
-    height: 300px;
+    width: 80%;
     display: flex;
-    justify-content: flex-start;
-    flex-flow: row wrap;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.5);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 5vh 0;
-
-    &:nth-child(even) {
-        flex-flow: row-reverse wrap;
-    }
 
     @media only screen and (max-width: 768px) {
         flex-flow: column nowrap;
@@ -34,42 +28,34 @@ const Card = styled.div`
 
 const Image = styled.div`
     width: 40%;
-    height: auto;
+    height: 300px;
     background-image: url(${props => props.image});
     background-position: center center;
     background-size: cover;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-
+    
     @media only screen and (max-width: 768px) {
         width: 100%;
         height: 350px;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 0px;
     }
 `
 
 const Infos = styled.div`
     display: flex;
-    width: 56%;
-    padding: 2%;
+    width: 60%;
     flex-flow: column nowrap;
     justify-content: space-evenly;
+    align-items: center;
 
     @media only screen and (max-width: 768px) {
-        align-items: center;
         width: 98%;
         padding: 1%;
+        text-align: justify;
     }
-`
-
-const Header = styled.span`
-    font-size: 42px;
-    font-family: 'Dosis', 'Roboto', sans-serif;
 `
 
 const Desc = styled.span`
     font-size: 18px;
+    margin: 2vh 0;
 `
 
 const Button = styled.a`
@@ -78,7 +64,7 @@ const Button = styled.a`
     align-items: center;
     width: 250px;
     height: 50px;
-    margin-right: 10px;
+    margin: 2vh 0;
     color: #4D6C80;
     font-size: 18px;
     background-color: transparent;
@@ -100,15 +86,12 @@ export default class Projeto extends React.Component {
         return (
             <>
                 <Wrapper>
-                    {dataArray.filter(element => element.id == id).map((element, index) => (
+                    {dataArray.filter(element => element.id === id).map((element, index) => (
                         <Card key={index}>
                             <Image image={element.image} />
                             <Infos>
-                                <Header>
-                                    {element.header}
-                                </Header>
                                 <Desc>
-                                    {element.desc}
+                                    {element.fullText}
                                 </Desc>
                                 <Button href={element.externalLink}>
                                     {element.externalLinkName}

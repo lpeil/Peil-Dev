@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     z-index: 1;
 
     @media only screen and (max-width: 768px) {
-        background-size: 45%;
+        background-size: 90%;
     }
 `
 
@@ -94,7 +94,7 @@ export default class HomePage extends React.Component {
             <Wrapper>
                 <HomeInfos ref={ div => this.content = div }>
                     <Title ref={ span => this.name = span }>Desenvolvedor Web</Title>
-                    <Subtitle ref={ span => this.desc = span}>Bla bla bla, frase genêrica sobre programação super legal</Subtitle>
+                    <Subtitle ref={ span => this.desc = span}>Bla bla bla, e uma frase genérica sobre programação super legal</Subtitle>
                     <Photo ref={ span => this.photo = span}/>
                 </HomeInfos>
             </Wrapper>

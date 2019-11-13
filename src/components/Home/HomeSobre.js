@@ -32,7 +32,7 @@ const Title = styled.span`
 
 const SubTitle = styled.span`
     font-size: 18px;
-    text-align: center;
+    text-align: justify;
 `
 
 const Cards = styled.div`
@@ -45,6 +45,7 @@ const Cards = styled.div`
 
     @media only screen and (max-width: 740px) {
         flex-flow: column wrap;
+        align-items: center;
     }
 `
 

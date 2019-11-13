@@ -9,6 +9,10 @@ const Wrapper = styled.div`
     align-items: center;
     flex-flow: column nowrap;
     margin-top: 5vh;
+
+    @media only screen and (max-width: 768px) {
+        margin: 5vh 0;
+    }
 `
 
 const Title = styled.div`
@@ -16,6 +20,7 @@ const Title = styled.div`
     line-height: 54px;
     color: #141c3a;
     margin: 2vh;
+    text-align: center;
 `
 
 const Form = styled.form`

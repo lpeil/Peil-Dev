@@ -25,15 +25,29 @@ const Card = styled.div`
     &:nth-child(even) {
         flex-flow: row-reverse wrap;
     }
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column nowrap;
+        height: auto;
+        width: 80%;
+    }
 `
 
 const Image = styled.div`
     width: 40%;
     height: auto;
-    min-width: 300px;
     background-image: url(${props => props.image});
     background-position: center center;
     background-size: cover;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        height: 250px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+    }
 `
 
 const Infos = styled.div`
@@ -42,6 +56,13 @@ const Infos = styled.div`
     padding: 2%;
     flex-flow: column nowrap;
     justify-content: space-evenly;
+
+    @media only screen and (max-width: 768px) {
+        align-items: center;
+        width: 96%;
+        padding: 2%;
+        margin: 2vh 0;
+    }
 `
 
 const Header = styled.span`
@@ -51,6 +72,11 @@ const Header = styled.span`
 
 const Desc = styled.span`
     font-size: 18px;
+
+    @media only screen and (max-width: 768px) {
+        margin: 4vh 0;
+        text-align: justify;
+    }
 `
 
 const Button = styled.a`

@@ -41,6 +41,10 @@ const Card = styled(Link)`
     background-color: #141C3A;
     border-radius: 10px;
     box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.5);
+
+    @media only screen and (max-width: 768px) {
+        margin: 2vh 0;
+    }
 `
 
 const Image = styled.div`
