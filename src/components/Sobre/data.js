@@ -4,7 +4,7 @@ import OtherIcon from '../../assets/icons/others.svg';
 
 export const dataArray = [
 	{
-        "id": "1",
+        "id": "back",
         "icon": BackendIcon,
         "head": "Desenvolvedor Back-end",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna id velit eleifend laoreet.",
@@ -13,7 +13,7 @@ export const dataArray = [
         "devtoolsubhead": "Ferramentas que uso:",
         "tools": ["Laravel", "Express", "Npm", "Yarn"],
 	},{
-        "id": "2",
+        "id": "front",
         "icon": FrontendIcon,
         "head": "Desenvolvedor Front-end",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna id velit eleifend laoreet.",
@@ -22,7 +22,7 @@ export const dataArray = [
         "devtoolsubhead": "Ferramentas que uso:",
         "tools": ["Styled Components", "GreenSock", "Bootstrap", "Material.io", "Materialize"],
 	},{
-        "id": "3",
+        "id": "outros",
         "icon": OtherIcon,
         "head": "Outros",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna id velit eleifend laoreet.",

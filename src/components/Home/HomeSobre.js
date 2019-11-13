@@ -161,7 +161,7 @@ export default class HomeSobre extends React.Component {
                 </Wrapper>
                 <Cards>
                     {dataArray.map((element, index) =>
-                        <Card id={index}>
+                        <Card key={index}>
                             <Icon image={element.icon}/>
                             <Head>{element.head}</Head>
                             <Description>{element.description}</Description>
@@ -169,8 +169,8 @@ export default class HomeSobre extends React.Component {
                             <Linguages>{element.linguages}</Linguages>
                             <DevTools>
                                 <SubHead>{element.devtoolsubhead}</SubHead>
-                                {element.tools.map((tool) => 
-                                    <Tool>{tool}</Tool>
+                                {element.tools.map((tool, key) => 
+                                    <Tool key={key}>{tool}</Tool>
                                 )}
                             </DevTools>
                         </Card>

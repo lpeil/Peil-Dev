@@ -74,6 +74,7 @@ const Button = styled.button`
     border: 2px solid #7510F7;
     border-radius: 28px;
     cursor: pointer;
+    outline: none;
     transition: 0.4s;
 
     &:hover {

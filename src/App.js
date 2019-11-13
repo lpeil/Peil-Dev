@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar   from './components/Navbar';
 import Home     from './components/Home';
 import Projetos from './components/Projetos';
-import Sobre    from './components/Sobre';
+import Projeto  from './components/Projetos/projeto';
 import Contato  from './components/Contato';
 
 const Content = styled.div`
@@ -24,20 +24,21 @@ const Content = styled.div`
   }
 `
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Content>    
-        <Navbar />
-        <Switch>
-          <Route exact={true} path="/"          component={Home} />
-          <Route exact={true} path="/projetos"  component={Projetos} />
-          <Route exact={true} path="/sobre"     component={Sobre} />
-          <Route exact={true} path="/contato"   component={Contato} />
-        </Switch>
-        </Content>
-    </BrowserRouter>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Content>    
+          <Navbar />
+          <Switch>
+            <Route exact={true} path="/"             component={Home} />
+            <Route exact={true} path="/projetos/"    component={Projetos} />
+            <Route exact={true} path="/projetos/:id" component={Projeto} />
+            <Route exact={true} path="/contato"      component={Contato} />
+          </Switch>
+          </Content>
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
