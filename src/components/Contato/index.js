@@ -154,7 +154,7 @@ export default class Contato extends React.Component {
 
         this.modal = '';
         this.modalWrapper = '';
-        this.modalAnimation = new TimelineLite({ paused: false });
+        this.modalAnimation = new TimelineLite({ paused: true });
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
