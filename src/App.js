@@ -7,6 +7,7 @@ import Home     from './components/Home';
 import Projetos from './components/Projetos';
 import Projeto  from './components/Projetos/projeto';
 import Contato  from './components/Contato';
+import NotFound from './components/NotFound';
 
 const Content = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ export default class App extends React.Component {
             <Route exact={true} path="/projetos/"    component={Projetos} />
             <Route exact={true} path="/projetos/:id" component={Projeto} />
             <Route exact={true} path="/contato"      component={Contato} />
+            <Route path="*" component={NotFound} />
           </Switch>
           </Content>
       </BrowserRouter>

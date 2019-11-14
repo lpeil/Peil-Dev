@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import MenuIcon from '../../assets/icons/menu.svg';
+import LogoIcon from '../../assets/logo.svg';
 
 const Wrapper = styled.div`
     position: fixed;
@@ -26,10 +27,13 @@ const FakeSpace = styled.div`
     z-index: -1;
 `
 
-const Logo = styled.div`
-    font-size: 32px;
-    font-family: 'Roboto Slab', serif;
-    color: #7510F7;
+const Logo = styled(NavLink)`
+    height: 75px;
+    width: 100px;
+    background-image: url(${LogoIcon});
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 `
 
 const LinksWrapper = styled.div`
@@ -115,7 +119,7 @@ export default class Navbar extends React.Component {
                     backgroundColor: this.state.backgroundColor,
                     boxShadow: this.state.boxShadow
                 }}>
-                    <Logo>  Peil</Logo>
+                    <Logo to="/" />
                     <LinksWrapper>
                         <MenuLink to="/" exact activeClassName="active">ÍNICIO</MenuLink>
                         <MenuLink to="/projetos" activeClassName="active">PROJETOS</MenuLink>

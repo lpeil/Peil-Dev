@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TimelineLite } from "gsap/all";
 
 import { dataArray } from "../Projetos/data";
 import Footer from "../Footer";
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
 `
 
 const Card = styled.div`
+    position: relative;
     width: 70%;
     height: 300px;
     display: flex;
@@ -100,13 +102,25 @@ const Button = styled.a`
     }
 `
 
-export default class Projetos extends React.Component {     
+export default class Projetos extends React.Component { 
+    constructor(props){
+        super(props);
+        
+        this.cards = [];
+
+        this.cardAnimation = new TimelineLite({ paused: false });
+    }
+    
+    componentDidMount() {      
+        this.cardAnimation
+            .staggerFrom(this.cards, 0.5, { left: 300, autoAlpha: 0, delay: 0.5 }, 0.5);
+    }
     render() {
         return (
             <>
                 <Wrapper>
                     {dataArray.map((element, index) => (
-                        <Card key={index}>
+                        <Card key={index} ref={div => this.cards[index] = div}>
                             <Image image={element.image} />
                             <Infos>
                                 <Header>
