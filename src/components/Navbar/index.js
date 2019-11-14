@@ -95,21 +95,32 @@ const MenuMobileIcon = styled.div`
 
 const MenuMobile = styled.div`
     position: fixed;
-    display: flex;
+    display: none;
     flex-flow: column nowrap;
-    width: 80%;
+    align-items: center;
+    width: 100%;
     height: calc(100vh - 75px);
     top: 75px;
     right: 0;
     background-color: #fff;
     box-shadow: -3px 7px 5px 0px rgba(0,0,0,0.25);
     z-index: 1000;
+
+    @media only screen and (max-width: 768px) {
+        display: flex;
+    }
 `
 
 const MenuMobileLink = styled(NavLink)`
-    margin: 1vh 10px;
+    margin: 2vh 0;
     font-size: 22px;
     color: #141c3a;
+    transition: 0.4s;
+    
+    &.active {
+        color: #7510F7;
+        font-weight: bolder;
+    }
 `
 
 export default class Navbar extends React.Component {
@@ -141,14 +152,13 @@ export default class Navbar extends React.Component {
         window.addEventListener('scroll', this.listenScrollEvent)
 
         this.menuAnimation
-            .from(this.menu, 1, { left: 500 }, 0);
+            .from(this.menu, 1, { left: 800 }, 0);
     }
 
     handlerClick() {
         if(!this.state.open){
             this.menuAnimation.play();
             this.setState({open: true});
-            this.setState({boxShadow: '0px 5px 5px 0px rgba(0,0,0,0.25)'})
         } else {
             this.menuAnimation.reverse();
             this.setState({open: false});

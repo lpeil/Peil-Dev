@@ -119,7 +119,7 @@ const Description = styled.span`
     color: #000;
     line-height: 25px;
     font-size: 16px;
-    text-align: center;
+    text-align: justify;
 `
 
 const SubHead = styled.span`

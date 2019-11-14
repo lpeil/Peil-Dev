@@ -18,7 +18,7 @@ export const dataArray = [
         "head": "Desenvolvedor Front-end",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum urna id velit eleifend laoreet.",
         "linguagenssubhead": "Linguagens que uso:",
-        "linguages": "HTML, CSS, React e React Native",
+        "linguages": "HTML, CSS, JavaScript, React e React Native",
         "devtoolsubhead": "Ferramentas que uso:",
         "tools": ["Styled Components", "GreenSock", "Bootstrap", "Material.io", "Materialize"],
 	},{
