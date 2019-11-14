@@ -18,7 +18,7 @@ export const dataArray = [
         "image": CardFMON,
         "desc": "Uma plataforma para o e-sport de Football Manager, com sistema de transferências, organização de campeonatos, tabelas e entre outras. Atualmente a maior plataforma de FM Online do mundo, tendo 9 grandes campeonatos simultâneos em 2019.",
         "fullText": "Uma plataforma para o e-sport de Football Manager, com sistema de transferências, organização de campeonatos, tabelas e entre outras. Atualmente a maior plataforma de FM Online do mundo, tendo 9 grandes campeonatos simultâneos em 2019.",
-        "situation": "(Em ativade)",
+        "situation": "(Em atividade)",
         "intenalLink": "/projetos/fmon",
         "externalLink": "https://fmon.org",
         "externalLinkName": "Ver Site"

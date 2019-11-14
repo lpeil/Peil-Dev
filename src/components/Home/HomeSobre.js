@@ -157,7 +157,7 @@ export default class HomeSobre extends React.Component {
                 <Wrapper>
                     <Apresentention>
                         <Title>Opa, sou o Luan Peil, seja bem vindo.</Title>
-                        <SubTitle>Sou programador a 4 anos, e atualmente estudo Sistemas para a Internet, tenho conhecimento em desenvolvimento web tanto back-end, tanto front-end, e algumas habilidades com Linux e desenvolvimento de games e mobile.</SubTitle>
+                        <SubTitle>Sou programador a 4 anos, e atualmente estudo Sistemas para a Internet, tenho conhecimento em desenvolvimento web, tanto back-end, quanto front-end, e algumas habilidades com Linux e desenvolvimento de games e mobile.</SubTitle>
                     </Apresentention>
                 </Wrapper>
                 <Cards>

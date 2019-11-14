@@ -29,6 +29,6 @@ export const dataArray = [
         "linguagenssubhead": "Outras linguagens que uso:",
         "linguages": "C, C++ e GdScript",
         "devtoolsubhead": "Ferramentas que uso:",
-        "tools": ["GitHub", "Codepen", "Terminal", "Unit", "Godot"],
+        "tools": ["GitHub", "Codepen", "Terminal", "Unity", "Godot"],
 	}
 ];
