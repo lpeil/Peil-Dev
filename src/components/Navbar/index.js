@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { TimelineLite } from "gsap/all";
 
 import MenuIcon from '../../assets/icons/menu.svg';
 import LogoIcon from '../../assets/logo.svg';
@@ -92,10 +93,38 @@ const MenuMobileIcon = styled.div`
     }
 `
 
+const MenuMobile = styled.div`
+    position: fixed;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 80%;
+    height: calc(100vh - 75px);
+    top: 75px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: -3px 7px 5px 0px rgba(0,0,0,0.25);
+    z-index: 1000;
+`
+
+const MenuMobileLink = styled(NavLink)`
+    margin: 1vh 10px;
+    font-size: 22px;
+    color: #141c3a;
+`
+
 export default class Navbar extends React.Component {
+    constructor(props){
+        super(props);
+        
+        this.menu = null;
+
+        this.menuAnimation = new TimelineLite({ paused: true });
+    }
+
     state = {
         backgroundColor: 'transparent',
-        boxShadow: 'none'
+        boxShadow: 'none',
+        open: false
     }
     
     listenScrollEvent = e => {
@@ -110,8 +139,22 @@ export default class Navbar extends React.Component {
     
     componentDidMount() {
         window.addEventListener('scroll', this.listenScrollEvent)
+
+        this.menuAnimation
+            .from(this.menu, 1, { left: 500 }, 0);
     }
-    
+
+    handlerClick() {
+        if(!this.state.open){
+            this.menuAnimation.play();
+            this.setState({open: true});
+            this.setState({boxShadow: '0px 5px 5px 0px rgba(0,0,0,0.25)'})
+        } else {
+            this.menuAnimation.reverse();
+            this.setState({open: false});
+        }
+    }
+
     render() {
         return(
             <>
@@ -125,8 +168,13 @@ export default class Navbar extends React.Component {
                         <MenuLink to="/projetos" activeClassName="active">PROJETOS</MenuLink>
                         <MenuLink to="/contato" activeClassName="active">CONTATO</MenuLink>
                     </LinksWrapper>
-                    <MenuMobileIcon />
+                    <MenuMobileIcon onClick={() => this.handlerClick()} />
                 </Wrapper>
+                <MenuMobile ref={div => this.menu = div}>
+                    <MenuMobileLink to="/" exact activeClassName="active">ÍNICIO</MenuMobileLink>
+                    <MenuMobileLink to="/projetos" activeClassName="active">PROJETOS</MenuMobileLink>
+                    <MenuMobileLink to="/contato" activeClassName="active">CONTATO</MenuMobileLink>
+                </MenuMobile>
                 <FakeSpace></FakeSpace>
             </>
         )
