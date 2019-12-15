@@ -45,6 +45,11 @@ const Input = styled.input`
     border: 1px solid #E6ECF8;
     border-radius: 4px;
     outline: none;
+    transition: 0.5s;
+
+    &:focus {
+        border-color: #141c3a;
+    }
 `
 
 const Field = styled.div`
@@ -69,6 +74,12 @@ const Message = styled.textarea`
     border: 1px solid #E6ECF8;
     border-radius: 4px;
     outline: none;
+
+    transition: 0.5s;
+
+    &:focus {
+        border-color: #141c3a;
+    }
 `
 
 const Button = styled.button`
@@ -77,6 +88,7 @@ const Button = styled.button`
     justify-content: center;
     width: 190px;
     height: 55px;
+    margin-top: 30px;
     color: #7510F7;
     background-color: transparent;
     border: 2px solid #7510F7;
@@ -204,7 +216,7 @@ export default class Contato extends React.Component {
         return (
             <>
                 <Wrapper>
-                    <Title>No que que posso te ajudar?</Title>
+                    <Title>No que eu posso te ajudar?</Title>
                     <Form onSubmit={this.handleSubmit}>
                         <Line>
                             <Field>

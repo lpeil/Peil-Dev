@@ -27,8 +27,8 @@ const Card = styled.div`
 `
 
 const Image = styled.div`
-    width: 40%;
-    height: 300px;
+    width: 60%;
+    height: 450px;
     background-image: url(${props => props.image});
     background-position: center center;
     background-size: cover;
@@ -88,7 +88,7 @@ export default class Projeto extends React.Component {
                 <Wrapper>
                     {dataArray.filter(element => element.id === id).map((element, index) => (
                         <Card key={index}>
-                            <Image image={element.image} />
+                            <Image image={element.fullimage} />
                             <Infos>
                                 <Desc>
                                     {element.fullText}
