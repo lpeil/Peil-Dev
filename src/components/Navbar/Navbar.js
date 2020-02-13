@@ -12,12 +12,16 @@ import {
 const Navbar = () => {
     const [menu, setMenu] = useState(false);
 
+    const closeOnClick = () => {
+        setMenu(false);
+    }
+
     return (
         <>
             <Wrapper>
                 <NavLogo to="/" />
                 <NavMobile onClick={() => setMenu(!menu)} />
-                <Links Open={menu}>
+                <Links onClick={closeOnClick} Open={menu}>
                     <NavbarLink activeClassName="active" to="/">Início</NavbarLink>
                     <NavbarLink activeClassName="active" to="/contact">Contato</NavbarLink>
                     <NavbarLink activeClassName="active" to="/projects">Projetos</NavbarLink>

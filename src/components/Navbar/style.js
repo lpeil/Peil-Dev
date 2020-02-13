@@ -44,11 +44,11 @@ export const Links = styled.div`
         width: 100vw;
         max-width: 100vw;
         top: 75px;
-        right: ${props => props.Open ? 0 : "-110vw"};
+        right: ${props => props.Open ? 0 : "-101vw"};
         
         background-color: #fff;
         box-shadow: -2px 2px 2px 0px rgba(0,0,0,0.2);
-        transition: 0.25s;
+        transition: 0.4s;
     }
 `
 
@@ -85,9 +85,9 @@ export const NavbarLink = styled(NavLink)`
     }
 
     @media screen and (max-width: 576px) {
-        margin: 5px 0;
+        margin: 10px 0;
 
-        font-size: 18px;
+        font-size: 24px;
 
         &.active {
             font-weight: bold;
