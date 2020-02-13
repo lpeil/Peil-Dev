@@ -1,0 +1,14 @@
+:root {
+    --color1: #141c3a;
+    --color2: #7510F7;
+}
+
+html, body, #root {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    
+    background: none;
+    font-family: 'Open Sans', sans-serif;
+}
