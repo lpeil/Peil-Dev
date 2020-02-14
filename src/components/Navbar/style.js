@@ -14,16 +14,12 @@ export const Wrapper = styled.nav`
     max-width: 100vw;
     height: 75px;
 
-    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color: #fff;
+    box-shadow: ${props => props.Hold ? "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)" : "none"};
 
     @media screen and (max-width: 576px) {
         justify-content: space-between;
     }
-`
-
-export const FakeSpace = styled.div`
-    width: 90vw;
-    height: 75px;
 `
 
 export const Links = styled.div`
@@ -41,7 +37,7 @@ export const Links = styled.div`
         justify-content: flex-start;
 
         height: calc(100vh - 75px);
-        width: 100vw;
+        width: 100%;
         max-width: 100vw;
         top: 75px;
         right: ${props => props.Open ? 0 : "-101vw"};
@@ -100,8 +96,8 @@ export const NavbarLink = styled(NavLink)`
 `
 
 export const NavLogo = styled(Link)`
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
 
     background-image: url(${LogoImg});
     background-size: contain;

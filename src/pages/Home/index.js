@@ -1,8 +1,14 @@
 import React from 'react';
 
+import HomeInitial from './homeInitial';
+import HomeAbout   from './homeAbout';
+
 const Home = () => {
     return (
-        <span>Home</span>
+        <>
+            <HomeInitial />
+            <HomeAbout />
+        </>
     )
 }
 
