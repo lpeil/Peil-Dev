@@ -8262,14 +8262,6 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
-react-router-dom@^6.0.0-alpha.1:
-  version "6.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.0.0-alpha.1.tgz#10798a64402d3f113ba8e5bed04bf3009b1d28df"
-  integrity sha512-k53/EN/yOIy+iSuolJc+3uGAUq06AuEhTXDCac2Hk+YBfRD4fD0cQL3Ram79J8ishRQehycjcfn3+S45iNZb9g==
-  dependencies:
-    history "5.0.0-beta.4"
-    prop-types "^15.7.2"
-
 react-router@^6.0.0-alpha.1:
   version "6.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.0-alpha.1.tgz#1bc907f221476e5514370bf296defe41c57e70cd"

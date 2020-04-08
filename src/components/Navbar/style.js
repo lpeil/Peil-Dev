@@ -1,8 +1,4 @@
 import styled from 'styled-components'
-import { Link, NavLink } from 'react-router-dom';
-
-import LogoImg  from '../../assets/logo.svg';
-import MenuIcon from '../../assets/icons/menu.svg';
 
 export const Wrapper = styled.nav`
     position: fixed;
@@ -14,8 +10,10 @@ export const Wrapper = styled.nav`
     max-width: 100vw;
     height: 75px;
 
-    background-color: #fff;
-    box-shadow: ${props => props.Hold ? "0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)" : "none"};
+    background: rgba(233, 235, 230, 0.75);
+    backdrop-filter: blur(3px);
+    box-shadow: ${props => props.Hold ? "var(--boxShadow)" : "none"};
+    z-index: 1;
 
     @media screen and (max-width: 576px) {
         justify-content: space-between;
@@ -27,34 +25,21 @@ export const Links = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    width: calc(100% - 120px);
-    max-width: 300px;
+    width: calc(100% - 160px);
+    max-width: 350px;
 
     @media screen and (max-width: 576px) {
-        position: fixed;
-        flex-flow: column;
-        align-items: center;
-        justify-content: flex-start;
-
-        height: calc(100vh - 75px);
-        width: 100%;
-        max-width: 100vw;
-        top: 75px;
-        right: ${props => props.Open ? 0 : "-101vw"};
-        
-        background-color: #fff;
-        box-shadow: -2px 2px 2px 0px rgba(0,0,0,0.2);
-        transition: 0.4s;
+        display: none;
     }
 `
 
-export const NavbarLink = styled(NavLink)`
+export const NavbarLink = styled.a`
     position: relative;
     display: inline-flex;
     box-sizing: border-box;
     justify-content: center;
 
-    color: var(--color2);
+    color: var(--color1);
     font-size: 18px;
     text-decoration: none;
 
@@ -67,13 +52,9 @@ export const NavbarLink = styled(NavLink)`
         right: 0;
         bottom: -5px;
 
-        border-bottom: 2px solid var(--color2);
+        border-bottom: 2px solid var(--color1);
         pointer-events: none;
         transition: 0.25s;
-    }
-
-    &.active:after {
-        width: 100%;
     }
 
     &:hover:after {
@@ -85,43 +66,72 @@ export const NavbarLink = styled(NavLink)`
 
         font-size: 24px;
 
-        &.active {
-            font-weight: bold;
-        }
-
         &:after {
             display: none;
         }
     }
 `
 
-export const NavLogo = styled(Link)`
+export const NavLogo = styled.a`
     width: 75px;
     height: 75px;
 
-    background-image: url(${LogoImg});
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    & svg {
+        height: 90%;
+        width: 90%;
+    }
+
+    & path, g {
+        fill: var(--color1);
+        stroke: var(--color1);
+    }
 
     @media screen and (max-width: 576px) {
         margin-left: 15px;
     }
 `
 
-export const NavMobile = styled.div `
+export const NavMobile = styled.div`
     display: none;
+    align-items: center;
+    justify-content: center;
 
     width: 70px;
     height: 70px;
     margin-right: 15px;
 
+    & svg {
+        width: 40%;
+        height: 40%;
+        margin: 0;
+    }
+
+    & path {
+        fill: var(--color1);
+        stroke: var(--color1);
+    }
+
     @media screen and (max-width: 576px) {
         display: flex;
-
-        background-image: url(${MenuIcon});
-        background-size: 40%;
-        background-position: center;
-        background-repeat: no-repeat;
     }
+`
+
+export const MobileMenu = styled.div`
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    height: calc(100vh - 75px);
+    width: 100%;
+    max-width: 100vw;
+    top: 75px;
+    right: ${props => props.Open ? 0 : "-101vw"};
+        
+    background-color: rgba(233, 235, 230, 0.75);
+    backdrop-filter: blur(3px);
+    box-shadow: -2px 2px 2px 0px rgba(0,0,0,0.2);
+    transition: 0.4s;
+    z-index: 1;
 `
