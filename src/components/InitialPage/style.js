@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
 
     width: 100%;
     height: 100vh;
+
+    font-family: 'Gotu', sans-serif;
 `
 
 export const Presetion = styled.h1`
